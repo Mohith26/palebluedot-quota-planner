@@ -36,7 +36,7 @@ function render() {
   $('sSpend').innerHTML = `${money(s.spendP50, 0)}<small>of ${money(s.demand, 0)} demand</small>`;
   $('sSpendSub').textContent = `80% range ${money(s.spendP10, 0)} – ${money(s.spendP90, 0)}`;
   $('sOver').innerHTML = `${pct(s.pOverBudget)}<small>${mode === 'overbook' ? 'target ' + pct(alpha, 0) : 'quotas sum to ' + money(s.sumQuotas, 0)}</small>`;
-  $('sOverSub').textContent = `replay${mode === 'overbook' ? ' (95% plan)' : ''}: over in ${rp.overWeeks} of ${R.replay.rows.length} weeks`;
+  $('sOverSub').textContent = `replay: over in ${rp.overWeeks} of ${R.replay.rows.length} weeks`;
   drawChart();
   table();
   icons();
@@ -132,7 +132,7 @@ function drawChart() {
 // ---------- table ----------
 function spark(i) {
   const obs = R.sim.observed[i].slice(Q.WEEKS - 12), vals = obs.map((o) => (o ? o.spend : 0));
-  const mx = Math.max(...vals, 1), w = 84, h = 22;
+  const mx = Math.max(...vals, 1), w = 62, h = 22;
   const pts = vals.map((v, k) => [k * w / (vals.length - 1), h - 2 - v / mx * (h - 4)]);
   const dots = obs.map((o, k) => (o && o.blocked ? `<circle cx="${pts[k][0]}" cy="${pts[k][1]}" r="2" fill="#f04438"/>` : '')).join('');
   return `<svg width="${w}" height="${h}"><path d="${pts.map((p, k) => (k ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join('')}" fill="none" stroke="#0086ff" stroke-width="1.4"/>${dots}</svg>`;
