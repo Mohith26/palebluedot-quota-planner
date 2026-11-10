@@ -153,7 +153,7 @@ function table() {
   document.querySelector('.pg b').textContent = page + 1;
   $('applyAll').innerHTML = applied ? '<i data-lucide="check"></i>Quotas Applied' : '<i data-lucide="check"></i>Apply Recommended Quotas';
   $('applyAll').classList.toggle('done', applied);
-  $('tbl').innerHTML = `<thead><tr><th style="width:34px"><span class="cbx"></span></th><th>Name</th><th>Role</th><th>Last 12 Weeks</th><th class="r">Weeks Blocked</th><th class="r">Forecast P50 / P90</th><th class="r">Current Quota</th><th class="r">${mode === 'flat' ? 'Quota' : LABEL[mode]}</th><th>Blocking Risk</th><th>Actions</th></tr></thead><tbody>` +
+  $('tbl').innerHTML = `<thead><tr><th style="width:34px"><span class="cbx"></span></th><th>Name</th><th>Role</th><th>Last 12 Weeks</th><th class="r">Blocked</th><th class="r">P50 / P90</th><th class="r">Current Quota</th><th class="r">${mode === 'flat' ? 'Quota' : LABEL[mode]}</th><th>Blocking Risk</th><th>Actions</th></tr></thead><tbody>` +
     slice.map((r) => {
       const qc = R.quotas.flat[r.i], qn = R.quotas[mode][r.i];
       const role = r.mm.role === 'Super Admin' ? 'super' : r.mm.role === 'Admin' ? 'admin' : '';
