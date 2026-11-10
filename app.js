@@ -32,11 +32,11 @@ function render() {
   $('sBudget').textContent = money(R.sim.budget);
   $('sMembers').textContent = active;
   $('sBlocked').innerHTML = `<span class="${rp.rate > 0.1 ? 'up' : 'ok'}">${pct(rp.rate)}</span><small>${rp.blocked} of ${rp.n}</small>`;
-  $('sBlockedSub').textContent = `12 replay weeks${mode === 'overbook' ? ' (95% plan)' : ''} · next week ${pct(s.blockedRate)}`;
+  $('sBlockedSub').textContent = `12-week replay · next week ${pct(s.blockedRate)}`;
   $('sSpend').innerHTML = `${money(s.spendP50, 0)}<small>of ${money(s.demand, 0)} demand</small>`;
   $('sSpendSub').textContent = `80% range ${money(s.spendP10, 0)} – ${money(s.spendP90, 0)}`;
   $('sOver').innerHTML = `${pct(s.pOverBudget)}<small>${mode === 'overbook' ? 'target ' + pct(alpha, 0) : 'quotas sum to ' + money(s.sumQuotas, 0)}</small>`;
-  $('sOverSub').textContent = `replay: over budget ${rp.overWeeks} of ${R.replay.rows.length} weeks`;
+  $('sOverSub').textContent = `replay${mode === 'overbook' ? ' (95% plan)' : ''}: over in ${rp.overWeeks} of ${R.replay.rows.length} weeks`;
   drawChart();
   table();
   icons();
