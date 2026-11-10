@@ -1,0 +1,57 @@
+{
+  "seed": 20261109,
+  "budget": 5500,
+  "members": 60,
+  "flatQuota": 91.67,
+  "nextWeek": {
+    "flat": {
+      "blockedRateNextWeek": 0.2486,
+      "expectedSpendP50": 2984,
+      "pOverBudget": 0,
+      "sumQuotas": 5500,
+      "unservedNextWeek": 1592
+    },
+    "strictCap": {
+      "blockedRateNextWeek": 0.2628,
+      "expectedSpendP50": 3444,
+      "pOverBudget": 0,
+      "sumQuotas": 5500,
+      "unservedNextWeek": 1140
+    },
+    "recommended95": {
+      "blockedRateNextWeek": 0.0273,
+      "expectedSpendP50": 4367,
+      "pOverBudget": 0.05,
+      "sumQuotas": 17096,
+      "unservedNextWeek": 161
+    }
+  },
+  "replay12Weeks": {
+    "flat": {
+      "blocked": 192,
+      "memberWeeks": 711,
+      "rate": 0.27,
+      "unserved": 19661,
+      "spend": 35476,
+      "overBudgetWeeks": 0
+    },
+    "strictCap": {
+      "blocked": 192,
+      "memberWeeks": 711,
+      "rate": 0.27,
+      "unserved": 14231,
+      "spend": 40906,
+      "overBudgetWeeks": 0
+    },
+    "recommended95": {
+      "blocked": 9,
+      "memberWeeks": 711,
+      "rate": 0.0127,
+      "unserved": 1931,
+      "spend": 53206,
+      "overBudgetWeeks": 1
+    },
+    "coverage80": 0.775
+  },
+  "historyBlockedSinceWeek13": "202 of 771"
+}

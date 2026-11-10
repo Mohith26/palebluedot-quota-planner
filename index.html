@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quota Planner · Admin Console · TokenRouter</title>
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="tog"><b></b></span>TokenRouter</div>
+    <nav class="toplinks">
+      <a>Docs</a><a class="dot">Release Notes</a>
+      <span class="bell"><i data-lucide="bell"></i><em>2</em></span>
+      <i data-lucide="sun" class="ico"></i>
+      <span class="avatar"><b>NL</b><span>Northwind Labs</span><i data-lucide="chevron-down"></i></span>
+    </nav>
+  </header>
+  <div class="promo">
+    <span class="fw l">✨</span>
+    <span class="chip"><i data-lucide="gift"></i>PREVIEW</span>
+    <span class="ptext">Quota Planner is in preview for Enterprise admins: right-size member quotas from usage history.</span>
+    <a class="claim">Learn More <i data-lucide="arrow-right"></i></a>
+    <span class="fw r">✨</span>
+    <span class="dots"><i></i><i class="on"></i></span>
+  </div>
+
+  <div class="shell">
+    <aside class="side">
+      <div class="grp open"><i data-lucide="users"></i>Admin Console<i data-lucide="chevron-up" class="chev"></i></div>
+      <div class="items">
+        <a>Overview</a><a>Members</a><a class="on">Quota Planner <span class="newtag">New</span></a><a>Org Management Keys</a><a>Org Usage Logs</a><a>Enterprise Balance</a><a>Settings</a>
+      </div>
+      <div class="grp"><i data-lucide="user"></i>Personal<i data-lucide="chevron-down" class="chev"></i></div>
+      <div class="collapse"><i data-lucide="chevron-left"></i>Collapse Sidebar</div>
+    </aside>
+
+    <main class="main">
+      <div class="phead">
+        <h1>Quota Planner</h1>
+        <div class="range" id="modeTabs">
+          <button data-mode="flat">Current</button><button data-mode="hard">Strict Cap</button><button data-mode="overbook" class="on">Recommended</button>
+        </div>
+        <div class="datebox"><span>Next week</span><b id="weekLbl">–</b><i data-lucide="calendar"></i></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="sl"><i data-lucide="dollar-sign"></i>Weekly Budget<i data-lucide="chevron-right" class="go"></i></div><div class="sv" id="sBudget">–</div></div>
+        <div class="stat"><div class="sl"><i data-lucide="users"></i>Active Members</div><div class="sv" id="sMembers">–</div></div>
+        <div class="stat"><div class="sl"><i data-lucide="octagon-x"></i>Blocked Member-Weeks</div><div class="sv" id="sBlocked">–</div><div class="ss" id="sBlockedSub"></div></div>
+        <div class="stat"><div class="sl"><i data-lucide="activity"></i>Expected Spend</div><div class="sv" id="sSpend">–</div><div class="ss" id="sSpendSub"></div></div>
+        <div class="stat"><div class="sl"><i data-lucide="shield-check"></i>Chance Over Budget</div><div class="sv" id="sOver">–</div><div class="ss" id="sOverSub"></div></div>
+      </div>
+
+      <section class="card">
+        <div class="ch"><h2>Plan Analysis</h2><p id="planSub">How each quota policy plays out next week, from 26 weeks of member usage.</p></div>
+        <div class="pilltabs" id="chartTabs"><button data-c="spend" class="on">Org Spend</button><button data-c="risk">Blocking Risk</button><button data-c="replay">Replay</button></div>
+        <div class="ctitle" id="ctitle">Org Spend Distribution</div>
+        <div class="chart" id="chart"></div>
+        <div class="clegend" id="clegend"></div>
+      </section>
+
+      <section class="card">
+        <div class="filters">
+          <div class="inp"><input id="q" placeholder="Search by name or email" /></div>
+          <div class="sel"><select id="dept"><option value="-1">All Departments</option></select><i data-lucide="chevron-down"></i></div>
+          <div class="sel"><select id="alpha"><option value="0.02">Budget confidence 98%</option><option value="0.05" selected>Budget confidence 95%</option><option value="0.1">Budget confidence 90%</option></select><i data-lucide="chevron-down"></i></div>
+          <button class="btn"><i data-lucide="search"></i>Search</button>
+          <button class="btn" id="reset"><i data-lucide="rotate-ccw"></i>Reset</button>
+        </div>
+        <div class="tbar">
+          <span id="records">– records</span>
+          <div class="tbtns"><button class="btn ghost" id="export">Export</button><button class="btn primary" id="applyAll"><i data-lucide="check"></i>Apply Recommended Quotas</button></div>
+        </div>
+        <div class="tablewrap"><table id="tbl"></table></div>
+        <div class="pager"><span id="showing"></span><span class="pg"><i data-lucide="chevron-left"></i><b>1</b><i data-lucide="chevron-right"></i></span></div>
+      </section>
+
+      <footer class="foot">Unofficial concept demo by Mohith Gajjela. Not affiliated with PaleBlueDot AI or TokenRouter. Synthetic data. <a href="https://github.com/Mohith26/palebluedot-quota-planner">Source &amp; method</a></footer>
+    </main>
+  </div>
+  <div class="tip" id="tip"></div>
+  <div class="toast" id="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
